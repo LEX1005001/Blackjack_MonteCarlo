@@ -13,6 +13,7 @@ namespace Blackjack_MonteCarlo
     {
         public int Rank { get; set; }
         public Suit Suit { get; set; }
+
     }
 
     /// <summary>

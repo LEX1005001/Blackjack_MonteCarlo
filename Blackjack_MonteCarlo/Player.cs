@@ -28,7 +28,7 @@ namespace Blackjack_MonteCarlo
             int numAces = 0;
             foreach (Card card in hand)
             {
-                if (card.Rank == 1) // Туз
+                if (card.Rank == 1) // Тузы
                 {
                     numAces++;
                     score += 11;
@@ -55,10 +55,23 @@ namespace Blackjack_MonteCarlo
 
         public abstract bool ShouldHit();
 
+        /// <summary>
+        /// Добавление карты в руку игрока
+        /// </summary>
+        /// <param name="card"></param>
         public void AddCard(Card card)
         {
-            // Добавление карты в руку игрока
+            
             hand.Add(card);
+        }
+
+        /// <summary>
+        /// Очистить руку игрока
+        /// </summary>
+        public void ResetCards()
+        {
+            hand.Clear();
         }
     }
 }
+
