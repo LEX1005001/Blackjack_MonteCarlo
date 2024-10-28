@@ -44,7 +44,14 @@ namespace Blackjack_MonteCarlo
         public void Shuffle()
         {
             Random random = new Random();
-            cards = cards.OrderBy(x => random.Next()).ToList();
+            int n = cards.Count;
+            while (n > 1)
+            {
+                int k = random.Next(n--);
+                var temp = cards[n];
+                cards[n] = cards[k];
+                cards[k] = temp;
+            }
         }
 
         /// <summary>
@@ -53,21 +60,19 @@ namespace Blackjack_MonteCarlo
         /// <returns></returns>
         public Card Deal()
         {
-            if (cards.Count > 0)
+            while (cards.Count == 0)
             {
-                Card card = cards[0];
-                cards.RemoveAt(0);
-                return card;
-            }
-            // Логика для случая, когда карты в колоде закончились.
-            else
-            {
-                // Повторно инициализироваем и перемешать колоду.
+                Console.WriteLine("Колода пуста. Инициализация и перемешивание...");
                 InitializeDeck();
                 Shuffle();
-                return Deal(); // Рекурсивный вызов Deal для получения карты после переинициализации колоды.
             }
+
+            Card card = cards[0];
+            cards.RemoveAt(0);
+            Console.WriteLine($"Раздана карта: {card.Rank} {card.Suit}");
+            return card;
         }
+
 
     }
 }

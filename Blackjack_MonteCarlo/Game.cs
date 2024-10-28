@@ -27,6 +27,10 @@ public class Game
         }
     }
 
+    /// <summary>
+    /// Симуляция игр
+    /// </summary>
+    /// <param name="numberOfGames">Кол-во игр</param>
     public void SimulateMultipleGames(int numberOfGames)
     {
         totalGames = numberOfGames;
@@ -41,6 +45,9 @@ public class Game
         DisplayStatistics();
     }
 
+    /// <summary>
+    /// Показать финальную статистику
+    /// </summary>
     private void DisplayStatistics()
     {
         Console.WriteLine("Итоговая статистика:");
@@ -50,6 +57,9 @@ public class Game
         }
     }
 
+    /// <summary>
+    /// Выдаём в начале игры по 2 карты из колоды 
+    /// </summary>
     private void DealInitialCards()
     {
         foreach (AIPlayer player in aiPlayers)
@@ -59,6 +69,9 @@ public class Game
         }
     }
 
+    /// <summary>
+    /// Проигрование AI-логики и в случае Hit даём карту из колоды
+    /// </summary>
     private void PlayAITurns()
     {
         foreach (AIPlayer player in aiPlayers)
@@ -70,6 +83,9 @@ public class Game
         }
     }
 
+    /// <summary>
+    /// Определение победителя
+    /// </summary>
     private void DetermineWinner()
     {
         int highestScore = 0;
@@ -88,6 +104,7 @@ public class Game
         if (winner != null)
         {
             winsCount[winner.GetStrategyName()]++;
+            Console.WriteLine($"Выграла тактика {winner.GetStrategyName()}");
         }
     }
 
@@ -99,10 +116,13 @@ public class Game
         }
     }
 
+    /// <summary>
+    /// Запуск игр
+    /// </summary>
     public static void Main()
     {
         Game game = new Game();
-        game.SimulateMultipleGames(1000);
+        game.SimulateMultipleGames(3);
     }
 }
 

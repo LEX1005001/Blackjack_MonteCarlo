@@ -20,6 +20,7 @@ namespace Blackjack_MonteCarlo
 
         public override bool ShouldHit()
         {
+
             return strategy.ShouldHit(CalculateScore());
         }
 

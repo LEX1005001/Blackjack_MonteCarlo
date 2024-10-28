@@ -55,13 +55,13 @@ namespace Blackjack_MonteCarlo
 
         public override bool ShouldHit(int currentScore)
         {
-            const int simulations = 1000; // Уменьшите количество симуляций для повышения скорости
-            int wins = 0;
+            const int simulations = 1000; // Кол-во симуляций для принятия решения
+            int wins = 0;                 //Кол-во побед в симуляции против дилера
 
             for (int i = 0; i < simulations; i++)
             {
                 int simulatedScore = currentScore;
-                bool playerBusted = false;
+                bool playerBusted = false; // Перебрал карты
 
                 // Имитация действий игрока
                 while (simulatedScore < 21 && ShouldHitInSimulation(simulatedScore))
@@ -95,9 +95,9 @@ namespace Blackjack_MonteCarlo
             return (double)wins / simulations > 0.5; // Если вероятность выигрыша больше 50%, то "бить"
         }
 
+
         private bool ShouldHitInSimulation(int currentScore)
         {
-            // Логика, по которой игрок решает, стоит ли ему бить
             return currentScore < 17; // Например, игрок бьет, если у него меньше 17
         }
     }
