@@ -36,11 +36,13 @@ public class Game
         totalGames = numberOfGames;
         for (int i = 0; i < numberOfGames; i++)
         {
+            deck.InitializeDeck();
             deck.Shuffle();
             DealInitialCards();
             PlayAITurns();
             DetermineWinner();
             ResetGame();
+
         }
         DisplayStatistics();
     }
@@ -64,8 +66,14 @@ public class Game
     {
         foreach (AIPlayer player in aiPlayers)
         {
-            player.AddCard(deck.Deal());
-            player.AddCard(deck.Deal());
+            if (deck.HasCards()) 
+            {
+                player.AddCard(deck.Deal());
+            }
+            if (deck.HasCards())
+            {
+                player.AddCard(deck.Deal());
+            }
         }
     }
 
@@ -78,7 +86,15 @@ public class Game
         {
             while (player.ShouldHit())
             {
-                player.AddCard(deck.Deal());
+                if (deck.HasCards())
+                {
+                    player.AddCard(deck.Deal());
+                }
+                else
+                {
+                    Console.WriteLine("Колода пуста, игрок не может взять карту.");
+                    break;
+                }
             }
         }
     }
@@ -106,6 +122,10 @@ public class Game
             winsCount[winner.GetStrategyName()]++;
             Console.WriteLine($"Выграла тактика {winner.GetStrategyName()}");
         }
+        else
+        {
+            Console.WriteLine("Ничья!");
+        }
     }
 
     private void ResetGame()
@@ -122,7 +142,7 @@ public class Game
     public static void Main()
     {
         Game game = new Game();
-        game.SimulateMultipleGames(3);
+        game.SimulateMultipleGames(100);
     }
 }
 

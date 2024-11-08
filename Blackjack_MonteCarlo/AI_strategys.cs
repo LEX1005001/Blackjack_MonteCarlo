@@ -15,7 +15,7 @@ namespace Blackjack_MonteCarlo
     // Атакующая/рисковая стратегия
     public class AggressiveStrategy : AIStrategy
     {
-        private Random random = new Random();
+        private static Random random = new Random(); // Статичный Random
 
         public override bool ShouldHit(int currentScore)
         {
@@ -23,7 +23,7 @@ namespace Blackjack_MonteCarlo
             int threshold = 20;
             if (currentScore == 19)
             {
-                return random.NextDouble() < 0.25; // 25% вероятность риска при счете 19
+                return random.NextDouble() < 0.50; // 50% вероятность риска при счете 19
             }
             return currentScore < threshold;
         }
@@ -32,7 +32,7 @@ namespace Blackjack_MonteCarlo
     // Защитная/пассивная стратегия
     public class ConservativeStrategy : AIStrategy
     {
-        private Random random = new Random();
+        private static Random random = new Random(); // Статичный Random
 
         public override bool ShouldHit(int currentScore)
         {
@@ -46,7 +46,7 @@ namespace Blackjack_MonteCarlo
     // Стратегия Монте-Карло
     public class MonteCarloStrategy : AIStrategy
     {
-        private Random random;
+        private static Random random = new Random(); // Статичный Random
 
         public MonteCarloStrategy()
         {
@@ -55,7 +55,7 @@ namespace Blackjack_MonteCarlo
 
         public override bool ShouldHit(int currentScore)
         {
-            const int simulations = 1000; // Кол-во симуляций для принятия решения
+            const int simulations = 10000; // Кол-во симуляций для принятия решения
             int wins = 0;                 //Кол-во побед в симуляции против дилера
 
             for (int i = 0; i < simulations; i++)

@@ -19,7 +19,6 @@ namespace Blackjack_MonteCarlo
         public Deck()
         {
             cards = new List<Card>();
-            InitializeDeck();
 
         }
 
@@ -73,6 +72,15 @@ namespace Blackjack_MonteCarlo
             return card;
         }
 
-
+        /// <summary>
+        /// Проверка наличия карт
+        /// </summary>
+        /// <returns></returns>
+        public bool HasCards()
+        {
+            return cards.Count > 0;
+        }
     }
+
+
 }
