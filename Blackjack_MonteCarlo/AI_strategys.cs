@@ -21,7 +21,7 @@ namespace Blackjack_MonteCarlo
         {
             // Увеличиваем вероятность хита, если счёт меньше 20
             int threshold = 20;
-            if (currentScore == 19)
+            if (currentScore <= 19)
             {
                 return random.NextDouble() < 0.50; // 50% вероятность риска при счете 19
             }
@@ -37,7 +37,7 @@ namespace Blackjack_MonteCarlo
         public override bool ShouldHit(int currentScore)
         {
             // Добавляем случайность к порогу хита
-            int threshold = 14 + random.Next(0, 3); // Случайно изменяем порог на 0, 1 или 2 пункта
+            int threshold = 11 + random.Next(0, 3); // Случайно изменяем порог на 0, 1 или 2 пункта
             return currentScore < threshold;
         }
     }
@@ -92,7 +92,7 @@ namespace Blackjack_MonteCarlo
                 }
             }
 
-            return (double)wins / simulations > 0.5; // Если вероятность выигрыша больше 50%, то "бить"
+            return (double)wins / simulations > 0.5; // Если вероятность выигрыша больше 60%, то "бить"
         }
 
 

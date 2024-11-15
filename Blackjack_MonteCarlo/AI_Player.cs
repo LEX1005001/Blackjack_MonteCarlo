@@ -9,8 +9,8 @@ namespace Blackjack_MonteCarlo
     // Класс ИИ-игрока
     public class AIPlayer : Player
     {
-        private AIStrategy strategy;
-        private string strategyName;
+        private AIStrategy strategy;  // Класс стратегии
+        private string strategyName;  // Имя стратегии
 
         public AIPlayer(AIStrategy strategy, string strategyName)
         {
@@ -24,6 +24,10 @@ namespace Blackjack_MonteCarlo
             return strategy.ShouldHit(CalculateScore());
         }
 
+        /// <summary>
+        /// Получение имени стратегии
+        /// </summary>
+        /// <returns></returns>
         public string GetStrategyName()
         {
             return strategyName;

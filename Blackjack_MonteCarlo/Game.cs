@@ -142,7 +142,7 @@ public class Game
     public static void Main()
     {
         Game game = new Game();
-        game.SimulateMultipleGames(100);
+        game.SimulateMultipleGames(1000);
     }
 }
 

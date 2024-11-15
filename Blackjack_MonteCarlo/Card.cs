@@ -14,8 +14,6 @@ namespace Blackjack_MonteCarlo
         public int Rank { get; set; }
         public Suit Suit { get; set; }
 
-        //public CardState State { get; set; } = CardState.Unused; // По умолчанию "Unused"
-
     }
 
     /// <summary>
@@ -26,12 +24,4 @@ namespace Blackjack_MonteCarlo
         Трефы, Бубны, Червы, Пики
     }
 
-    ///// <summary>
-    ///// Перечисление состояния карты
-    ///// </summary>
-    //public enum CardState
-    //{
-    //    Unused, // Неиспользованная карта
-    //    Used // Использованная карта
-    //}
 }
